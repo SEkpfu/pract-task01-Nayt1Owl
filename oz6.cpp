@@ -1,4 +1,5 @@
 #include<iostream>
+#include <windows.h>
 using namespace std;
 
 float calc(float& a, float& b)
@@ -16,6 +17,8 @@ float ost(float(a))
 void main()
 {
 	setlocale(LC_ALL, "");
+	SetConsoleOutputCP(CP_UTF8);
+	SetConsoleCP(CP_UTF8);
 	float a, b, x, y, h, j, k, l;
 	string c, d;
 	cin >> a >> b;
@@ -24,7 +27,7 @@ void main()
 	y = ost(calc(a, b));
 	while (c.length() > 40)
 	{
-		cout << "Ââåäèòå ñâîþ ôàìèëèþ íà ðóññêîì äëèíîé íå áîëåå 20 ñèìâîëîâ: " << endl;
+		cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã±Ã¢Ã®Ã¾ Ã´Ã Ã¬Ã¨Ã«Ã¨Ã¾ Ã­Ã  Ã°Ã³Ã±Ã±ÃªÃ®Ã¬ Ã¤Ã«Ã¨Ã­Ã®Ã© Ã­Ã¥ Ã¡Ã®Ã«Ã¥Ã¥ 20 Ã±Ã¨Ã¬Ã¢Ã®Ã«Ã®Ã¢: " << endl;
 		cin >> c;
 	}
 	cin >> h >> j;
@@ -33,10 +36,10 @@ void main()
 	l = ost(calc(h, j));
 	while (d.length() > 40)
 	{
-		cout << "Ââåäèòå ñâîþ ôàìèëèþ íà ðóññêîì äëèíîé íå áîëåå 20 ñèìâîëîâ: " << endl;
+		cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã±Ã¢Ã®Ã¾ Ã´Ã Ã¬Ã¨Ã«Ã¨Ã¾ Ã­Ã  Ã°Ã³Ã±Ã±ÃªÃ®Ã¬ Ã¤Ã«Ã¨Ã­Ã®Ã© Ã­Ã¥ Ã¡Ã®Ã«Ã¥Ã¥ 20 Ã±Ã¨Ã¬Ã¢Ã®Ã«Ã®Ã¢: " << endl;
 		cin >> d;
 	}
-	cout << "Êòî ïîëó÷èë íà ðóêè ìåíüøå 1000 ðóáëåé:" << endl;
+	cout << "ÃŠÃ²Ã® Ã¯Ã®Ã«Ã³Ã·Ã¨Ã« Ã­Ã  Ã°Ã³ÃªÃ¨ Ã¬Ã¥Ã­Ã¼Ã¸Ã¥ 1000 Ã°Ã³Ã¡Ã«Ã¥Ã©:" << endl;
 	if (y < 1000)
 	{
 		if (x > 50)
@@ -59,4 +62,5 @@ void main()
 			cout << d << endl;
 		}
 	}
+
 }
