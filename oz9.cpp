@@ -8,9 +8,9 @@ float num_min(float a[], int size)
 	r = 0;
 	for (int i = 0; i < size; i++)
 	{
-		if (a[i] < q)
+		if (*(a + i) < q)
 		{
-			q = a[i];
+			q = *(a + i);
 			r = i + 1;
 		}
 	}
@@ -22,9 +22,9 @@ float digit_max(float a[], int size)
 	q = -1;
 	for (int i = 0; i < size; i++)
 	{
-		if (a[i] > q)
+		if (*(a + i) > q)
 		{
-			q = a[i];
+			q = *(a + i);
 		}
 	}
 	return q;
@@ -36,9 +36,9 @@ float num_max(float a[], int size)
 	r = 0;
 	for (int i = 0; i < size; i++)
 	{
-		if (a[i] > q)
+		if (*(a + i) > q)
 		{
-			q = a[i];
+			q = *(a + i);
 			r = i + 1;
 		}
 	}
@@ -50,7 +50,7 @@ float schet(float a[], int size, int za)
 	q = 0;
 	for (int i = 0; i < size; i++)
 	{
-		if (a[i] > za)
+		if (*(a + i) > za)
 		{
 			q += 1;
 		}
@@ -63,25 +63,26 @@ float sum_el(float a[], int size)
 	q = 0;
 	for (int i = 0; i < size; i++)
 	{
-		q += a[i];
+		q += *(a + i);
 	}
 	return q;
 }
 void main()
 {
 	setlocale(LC_ALL, "");
-	float n, m[100], t;
-	cout << "Ñêîëüêî ýëåìåíòîâ ìàññèâà: " << endl;
+	float*m, n, t;
+	cout << "Ð¡ÐºÐ¾Ð»ÑŒÐºÐ¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð¼Ð°ÑÑÐ¸Ð²Ð°: " << endl;
 	cin >> t;
-	cout << "Çàäàííîå ÷èñëî: " << endl;
+	cout << "Ð—Ð°Ð´Ð°Ð½Ð½Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾: " << endl;
 	cin >> n;
-	cout << "×èñëà: " << endl;
+	m = new float[n];
+	cout << "Ð§Ð¸ÑÐ»Ð°: " << endl;
 	for (int i = 0; i < t; i++)
 	{
-		cin >> m[i];
+		cin >> *(m + i);
 	}
-	cout << "Íîìåð ìèíèèìàëüíîãî ýëåìåíòà: " << num_min(m, t) << endl;
-	cout << "Ìàêñèìàëüíûé ýëåìåíò: " << digit_max(m, t) << ", íîìåð åãî ýëåìåíòà: " << num_max(m, t) << endl;
-	cout << "Êîëè÷åñòâî òåõ ýëåìåíòîâ, êîòîðûå áîëüøå çàäàííîãî ÷èñëà: " << schet(m, t, n) << endl;
-	cout << "Ñóììà ýëåìåíòîâ: " << sum_el(m, t) << endl;
+	cout << "ÐÐ¾Ð¼ÐµÑ€ Ð¼Ð¸Ð½Ð¸Ð¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ð³Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°: " << num_min(m, t) << endl;
+	cout << "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚: " << digit_max(m, t) << ", Ð½Ð¾Ð¼ÐµÑ€ ÐµÐ³Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°: " << num_max(m, t) << endl;
+	cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ‚ÐµÑ… ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð², ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ð¾Ð»ÑŒÑˆÐµ Ð·Ð°Ð´Ð°Ð½Ð½Ð¾Ð³Ð¾ Ñ‡Ð¸ÑÐ»Ð°: " << schet(m, t, n) << endl;
+	cout << "Ð¡ÑƒÐ¼Ð¼Ð° ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð²: " << sum_el(m, t) << endl;
 }
