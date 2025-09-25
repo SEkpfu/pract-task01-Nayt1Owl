@@ -16,21 +16,25 @@ float ost(float(a))
 void main()
 {
 	setlocale(LC_ALL, "");
-	float a[100], b[100], c[100], mini, nom, maxi, mon, u, k, obsh, n;
-	cout << "Ñêîëüêî âñåãî ðàáîòíèêîâ: " << endl;
+	float* a, * b, * c;
+	float mini, nom, maxi, mon, u, k, obsh, n;
+	cout << "Ð¡ÐºÐ¾Ð»ÑŒÐºÐ¾ Ð²ÑÐµÐ³Ð¾ Ñ€Ð°Ð±Ð¾Ñ‚Ð½Ð¸ÐºÐ¾Ð²: " << endl;
 	cin >> n;
+	a = new float[n];
+	b = new float[n];
+	c = new float[n];
 	mini = 100000000000;
 	maxi = -10;
 	obsh = 0;
 	for (int i = 0; i < n; i++)
 	{
-		cout << "Ðàáîòíèê íîìåð " << i + 1 << ": " << endl;
-		cout << "×àñîâ: ";
-		cin >> a[i];
-		cout << "Ïî÷àñîâàÿ ñòàâêà: ";
-		cin >> b[i];
-		u = ost(calc(a[i], b[i]));
-		k = nal(calc(a[i], b[i]));
+		cout << "Ð Ð°Ð±Ð¾Ñ‚Ð½Ð¸Ðº Ð½Ð¾Ð¼ÐµÑ€ " << i + 1 << ": " << endl;
+		cout << "Ð§Ð°ÑÐ¾Ð²: ";
+		cin >> *(a + i);
+		cout << "ÐŸÐ¾Ñ‡Ð°ÑÐ¾Ð²Ð°Ñ ÑÑ‚Ð°Ð²ÐºÐ°: ";
+		cin >> *(b + i);
+		u = ost(calc(*(a + i), *(b + i)));
+		k = nal(calc(*(a + i), *(b + i)));
 		if (u < mini)
 		{
 			mini = u;
@@ -41,20 +45,19 @@ void main()
 			maxi = u;
 			mon = i + 1;
 		}
-		c[i] = u;
+		*(c + i) = u;
 		obsh += k;
 		cout << " " << endl;
 	}
-	cout << "Ìåíüøå âñåãî ïîëó÷èë ðàáîòíèê íîìåð " << nom << endl;
-	cout << "Áîëüøå âñåãî ïîëó÷èë ðàáîòíèê íîìåð " << mon << ", à èìåííî: " << maxi << endl;
-	cout << "Âñå, êòî ïîëó÷èë áîëåå 50_000 ðóáëåé:" << endl;
+	cout << "ÐœÐµÐ½ÑŒÑˆÐµ Ð²ÑÐµÐ³Ð¾ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ð» Ñ€Ð°Ð±Ð¾Ñ‚Ð½Ð¸Ðº Ð½Ð¾Ð¼ÐµÑ€ " << nom << endl;
+	cout << "Ð‘Ð¾Ð»ÑŒÑˆÐµ Ð²ÑÐµÐ³Ð¾ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ð» Ñ€Ð°Ð±Ð¾Ñ‚Ð½Ð¸Ðº Ð½Ð¾Ð¼ÐµÑ€ " << mon << ", Ð° Ð¸Ð¼ÐµÐ½Ð½Ð¾: " << maxi << endl;
+	cout << "Ð’ÑÐµ, ÐºÑ‚Ð¾ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ð» Ð±Ð¾Ð»ÐµÐµ 50_000 Ñ€ÑƒÐ±Ð»ÐµÐ¹:" << endl;
 	for (int i = 0; i < n; i++)
 	{
-		if (c[i] > 50000)
+		if (*(c + i) > 50000)
 		{
-			cout << "Ðàáîòíèê íîìåð " << i + 1 << " ïîëó÷èë " << c[i] << endl;
+			cout << "Ð Ð°Ð±Ð¾Ñ‚Ð½Ð¸Ðº Ð½Ð¾Ð¼ÐµÑ€ " << i + 1 << " Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ð» " << *(c + i) << endl;
 		}
 	}
-	cout << "Îáùàÿ ñóììà íàëîãà: " << obsh << endl;
-	cout << sizeof(a) << " " << sizeof(b);
+	cout << "ÐžÐ±Ñ‰Ð°Ñ ÑÑƒÐ¼Ð¼Ð° Ð½Ð°Ð»Ð¾Ð³Ð°: " << obsh << endl;
 }
