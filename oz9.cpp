@@ -75,7 +75,7 @@ void main()
 	cin >> t;
 	cout << "Заданное число: " << endl;
 	cin >> n;
-	m = new float[n];
+	m = new float[t];
 	cout << "Числа: " << endl;
 	for (int i = 0; i < t; i++)
 	{
@@ -86,3 +86,4 @@ void main()
 	cout << "Количество тех элементов, которые больше заданного числа: " << schet(m, t, n) << endl;
 	cout << "Сумма элементов: " << sum_el(m, t) << endl;
 }
+
